@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Lobby" type="JetRunConfigurationType">
+    <option name="MAIN_CLASS_NAME" value="dev.midka.astom.lobby.ServerKt" />
+    <module name="astom.lobby.main" />
+    <shortenClasspath name="NONE" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lobby" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
