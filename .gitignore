@@ -322,7 +322,6 @@ gradle-app.setting
 /extensions/
 /plugins/
 
-/ashes.yml
-/rocket.yml
+/astom.toml
 
 server/
