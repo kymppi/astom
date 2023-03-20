@@ -50,7 +50,7 @@ object Astom {
 
         val globalEventHandler = MinecraftServer.getGlobalEventHandler()
         globalEventHandler.addListener(PlayerLoginEvent::class.java) { event -> run {
-            var player = event.player
+            val player = event.player
             player.sendMessage("Welcome to Astom!")
             event.setSpawningInstance(instanceContainer)
             player.respawnPoint = Pos(0.0, 42.0, 0.0)
