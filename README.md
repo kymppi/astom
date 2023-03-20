@@ -6,6 +6,6 @@ Astom is a configurable minestom server. It uses `astom.toml` as a configuration
 
 - [x] Configuration file `astom.toml`
 - [ ] Commands
-  - [ ] /info
+  - [x] /info
   - [ ] /help
 - [ ] Monitoring (Prometheus endpoint)

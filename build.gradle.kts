@@ -14,10 +14,11 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("stdlib"))
     implementation("com.akuleshov7:ktoml-core:0.4.1")
     implementation("com.akuleshov7:ktoml-file:0.4.1")
-    implementation("com.github.Minestom.Minestom:Minestom:067227421f")
-    implementation("com.github.Moulberry:Minestand:-SNAPSHOT")
+    implementation("com.github.Minestom.Minestom:Minestom:0672274")
+    implementation("com.github.Moulberry:Minestand:master-SNAPSHOT")
 }
 
 tasks {
