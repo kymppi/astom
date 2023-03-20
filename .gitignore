@@ -319,9 +319,10 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,gradle,kotlin,java,eclipse,intellij+all,jetbrains+all,visualstudiocode
 
-/extensions/
-/plugins/
+**/extensions/
+**/plugins/
+**/data/
 
-/astom.toml
+**/astom.toml
 
 server/
