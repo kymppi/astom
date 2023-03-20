@@ -3,14 +3,20 @@ package dev.midka.astom
 import com.akuleshov7.ktoml.TomlOutputConfig
 import com.akuleshov7.ktoml.file.TomlFileReader
 import com.akuleshov7.ktoml.file.TomlFileWriter
+import dev.midka.astom.commands.InfoCommand
 import dev.midka.astom.config.Configuration
 import kotlinx.serialization.serializer
-import java.io.File
+import net.gauntletmc.command.Minestand
 import net.minestom.server.MinecraftServer
+import net.minestom.server.coordinate.Pos
+import net.minestom.server.event.player.PlayerLoginEvent
 import net.minestom.server.extras.MojangAuth
 import net.minestom.server.extras.PlacementRules
 import net.minestom.server.extras.bungee.BungeeCordProxy
 import net.minestom.server.extras.velocity.VelocityProxy
+import net.minestom.server.instance.block.Block
+import java.io.File
+
 
 object Astom {
     fun start(callback: AstomContext.() -> Unit = {}) {
@@ -37,6 +43,20 @@ object Astom {
         if (configuration.velocityConfiguration.enabled) VelocityProxy.enable(configuration.velocityConfiguration.secretKey)
 
         PlacementRules.init()
+
+        val instanceManager = MinecraftServer.getInstanceManager()
+        val instanceContainer = instanceManager.createInstanceContainer()
+        instanceContainer.setGenerator { unit -> unit.modifier().fillHeight(0, 40, Block.GRAY_CONCRETE)}
+
+        val globalEventHandler = MinecraftServer.getGlobalEventHandler()
+        globalEventHandler.addListener(PlayerLoginEvent::class.java) { event -> run {
+            var player = event.player
+            player.sendMessage("Welcome to Astom!")
+            event.setSpawningInstance(instanceContainer)
+            player.respawnPoint = Pos(0.0, 42.0, 0.0)
+        }}
+
+        Minestand.register(InfoCommand::class.java)
 
         with(context) {
             callback()
